@@ -1,0 +1,11 @@
+{
+  "/country/": {
+    "target": "https://restcountries.com/v3.1",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/country/": ""
+    },
+    "changeOrigin": true
+  }
+}
