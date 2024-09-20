@@ -6,6 +6,7 @@ import { catchError, Observable, of } from 'rxjs';
 import { ToastService } from '../../core/services/toast.service';
 import { ToastType } from '../../utils/enums/toastType';
 import { User } from '../interfaces/user';
+import { Constants } from '../../utils/constants';
 
 
 @Injectable({
@@ -15,14 +16,12 @@ export class AuthService {
 
   private httpClient = inject(HttpClient);
   private toastService = inject(ToastService);
-  private URLJson: string = 'assets/data/users.json';
 
   public readUsersJSON(): Observable<User[]>{
     return this.httpClient
-    .get<User[]>(this.URLJson)
+    .get<User[]>(Constants.JSON_USERS)
     .pipe(catchError(this.handleError<any>("readUserJSON", null)));
   }
-
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

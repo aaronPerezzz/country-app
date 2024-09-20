@@ -8,7 +8,7 @@
 export class Constants {
 
   public static URL_CONTRIES = "country";
-  public static URL_USERS = "users";
+  public static JSON_USERS = "assets/data/users.json";
   public static POSITION_TOAST = "toast-bottom-right";
 
 
