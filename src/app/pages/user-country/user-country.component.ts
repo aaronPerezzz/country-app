@@ -1,24 +1,28 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CountryService } from '../../core/services/country.service';
 import { ToastService } from '../../core/services/toast.service';
-import { ToastType } from '../../utils/enums/toastType';
+import { User } from '../../auth/interfaces/user';
+import { AuthService } from '../../auth/services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { Constants } from '../../utils/constants';
+
 
 @Component({
   selector: 'app-user-country',
   templateUrl: './user-country.component.html',
   styleUrl: './user-country.component.css'
 })
-export class UserCountryComponent {
+export class UserCountryComponent implements OnInit{
 
-  public countryService = inject(CountryService);
-  public toastMessage = inject(ToastService);
+  private countryService = inject(CountryService);
+  private users: User[] = [];
 
-  constructor() {
-        this.countryService.getCountryByName("South Georgia").subscribe( resp => {
-          console.log(resp)
-        })
+  constructor(private userDataService: AuthService) {}
 
-        this.toastMessage.message("Titulo","Mensaje", ToastType.SUCCESS);
+  ngOnInit(): void {
 
+   this.userDataService.readUsersJSON().subscribe(console.log);
   }
+
+
 }

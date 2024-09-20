@@ -34,7 +34,9 @@
               {
                 "glob": "**/*",
                 "input": "public"
-              }
+              },
+              "src/assets",
+              "src/assets/data"
             ],
             "styles": [
               "src/styles.css",
@@ -80,7 +82,10 @@
               "buildTarget": "country-app:build:development"
             }
           },
-          "defaultConfiguration": "development"
+          "defaultConfiguration": "development",
+          "options": {
+            "disableHostCheck": false
+          }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n"

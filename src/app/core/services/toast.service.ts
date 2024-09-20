@@ -13,16 +13,16 @@ export class ToastService {
 
     switch(toastType){
       case ToastType.INFO:
-        this.toastService.info(title, message);
+        this.toastService.info(message, title);
         break;
       case ToastType.ERROR:
-        this.toastService.error(title, message);
+        this.toastService.error(message, title);
         break;
       case ToastType.SUCCESS:
-        this.toastService.success(title, message);
+        this.toastService.success(message, title);
         break;
       case ToastType.WARNING:
-        this.toastService.warning(title, message);
+        this.toastService.warning(message, title);
     }
   }
 }

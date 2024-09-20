@@ -8,7 +8,9 @@
 export class Constants {
 
   public static URL_CONTRIES = "country";
+  public static URL_USERS = "users";
   public static POSITION_TOAST = "toast-bottom-right";
+
 
   public static NUM0 = 0;
   public static SHOW_TIME = 3000;
