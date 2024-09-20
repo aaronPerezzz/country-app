@@ -3,8 +3,9 @@ import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { Country } from '../interfaces/country';
 import { Constants } from '../../utils/constants';
-import { ToastrService } from 'ngx-toastr';
 import { map } from 'rxjs/operators';
+import { ToastService } from './toast.service';
+import { ToastType } from '../../utils/enums/toastType';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +21,7 @@ export class CountryService {
 
 
   private httpClient = inject(HttpClient);
-  private toastService = inject(ToastrService);
+  private toastService = inject(ToastService);
 
   /**
    * Obtiene el listado de regiones
@@ -62,16 +63,13 @@ export class CountryService {
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       if (error.error.mensaje) {
-        this.showToast('Error', error.error.mensaje);
+        this.toastService.message('Error', error.error.mensaje, ToastType.ERROR);
       } else {
-        this.showToast('Error', 'Ha ocurrido un error intente más tarde', );
+        this.toastService.message('Error', 'Ha ocurrido un error intente más tarde',ToastType.ERROR);
       }
       return of(result as T);
     };
   }
 
-  showToast(status: string, mensaje: string) {
-    this.toastService.error(status, mensaje);
-  }
 
 }
