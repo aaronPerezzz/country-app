@@ -12,7 +12,6 @@ export class CountryInfoComponent {
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    // Obtener el parámetro 'name' de la URL como string
     this.countryName = this.route.snapshot.paramMap.get('name')!;
     
     console.log('Country Name:', this.countryName);

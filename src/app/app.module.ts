@@ -8,22 +8,27 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { Constants } from './utils/constants';
-import { CountriesComponent } from './pages/countries/countries.component';
-import { CountryInfoComponent } from './pages/country-info/country-info.component';
+import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
 import { NavMenuComponent } from './pages/nav-menu/nav-menu.component';
+import { CountriesComponent } from './pages/countries/countries.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     UserCountryComponent,
-    CountriesComponent,
-    CountryInfoComponent,
-    NavMenuComponent
+    LoginPageComponent,
+    NavMenuComponent,
+    CountriesComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimations(),
@@ -31,7 +36,8 @@ import { NavMenuComponent } from './pages/nav-menu/nav-menu.component';
     preventDuplicates: true,
     closeButton: true,
     positionClass: Constants.POSITION_TOAST
-  }),
+    }),
+    CookieService
 ],
   bootstrap: [AppComponent]
 })

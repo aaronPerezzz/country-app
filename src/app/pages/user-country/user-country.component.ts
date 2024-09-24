@@ -13,15 +13,16 @@ import { Constants } from '../../utils/constants';
   styleUrl: './user-country.component.css'
 })
 export class UserCountryComponent implements OnInit{
+  name!: string;
+  region!: string;
 
-  private countryService = inject(CountryService);
-  private users: User[] = [];
-
-  constructor(private userDataService: AuthService) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
+    const user = this.authService.getToken();
 
-   this.userDataService.readUsersJSON().subscribe(console.log);
+    this.name = user.user.firstName; 
+    this.region = user.user.region;
   }
 
 

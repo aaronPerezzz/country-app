@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { CountryService } from '../../core/services/country.service';
 import { Observable } from 'rxjs';
 import { Country } from '../../core/interfaces/country';
@@ -11,9 +11,10 @@ import { Country } from '../../core/interfaces/country';
 export class CountriesComponent implements OnInit {
   public listaPaises$!: Observable<Country[]>;
   private countryService = inject(CountryService);
+  @Input() regionName!: string;
 
   ngOnInit(): void {
-    this.cargarPaises('America');
+    this.cargarPaises(this.regionName);
   }
 
   cargarPaises(regionName: string) {
