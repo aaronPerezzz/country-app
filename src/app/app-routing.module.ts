@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { UserCountryComponent } from './pages/user-country/user-country.component';
 import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
 import { authGuard } from './auth/guards/auth.guard';
+import { NotFoundPageComponent } from './core/shared/not-found-page/not-found-page.component';
 import { CountryInfoComponent } from './pages/country-info/country-info.component';
 
 const routes: Routes = [
   {
     path: 'login',
-    pathMatch: 'full',
     component: LoginPageComponent
   },
   {
@@ -22,8 +22,9 @@ const routes: Routes = [
     canActivate: [authGuard]
   },
   {
-    path: '**', component: LoginPageComponent
-  },
+    path: '**',
+    component: NotFoundPageComponent
+  }
 ];
 
 
