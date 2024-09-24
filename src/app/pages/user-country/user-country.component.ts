@@ -21,7 +21,7 @@ export class UserCountryComponent implements OnInit{
 
   ngOnInit(): void {
 
-   this.userDataService.readUsersJSON().subscribe(console.log);
+   console.log(this.userDataService.getToken())
   }
 
 

@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { ToastService } from '../../../core/services/toast.service';
 import { User } from '../../interfaces/user';
@@ -18,7 +18,7 @@ import { Constants } from '../../../utils/constants';
  * @author Aaron Pérez
  * @since 23/09/2024
  */
-export class LoginPageComponent implements OnInit {
+export class LoginPageComponent implements OnInit, OnDestroy {
 
 
   private authService = inject(AuthService);
@@ -44,10 +44,14 @@ export class LoginPageComponent implements OnInit {
     });
   }
 
-
   ngOnInit(): void {
     this.getAllUser();
+    this.authService.hideNavbar();
+  }
 
+  ngOnDestroy(): void {
+
+    this.authService.displayNavBar();
   }
 
   /**

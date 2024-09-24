@@ -2,7 +2,7 @@ import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 
-import { catchError, Observable, of } from 'rxjs';
+import { BehaviorSubject, catchError, Observable, of } from 'rxjs';
 import { ToastService } from '../../core/services/toast.service';
 import { ToastType } from '../../utils/enums/toastType';
 import { User } from '../interfaces/user';
@@ -18,6 +18,16 @@ export class AuthService {
   private httpClient = inject(HttpClient);
   private toastService = inject(ToastService);
   private cookieService = inject(CookieService);
+
+  showNavbar: BehaviorSubject<boolean>;
+
+  /**
+   *
+   */
+  constructor() {
+    this.showNavbar = new BehaviorSubject(true);
+
+  }
 
   /**
    * Lee archivo JSON de usuarios
@@ -75,6 +85,16 @@ export class AuthService {
   public logout(){
     this.cookieService.delete(Constants.ID_TOKEN);
   }
+
+  public hideNavbar(){
+    this.showNavbar.next(false);
+  }
+
+  public displayNavBar(){
+    this.showNavbar.next(true);
+  }
+
+
 
   /**
    * Captura error al realizar peticiones

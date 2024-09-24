@@ -11,13 +11,17 @@ import { Constants } from './utils/constants';
 import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
+import { NavbarComponent } from './core/shared/navbar/navbar.component';
+import { NotFoundPageComponent } from './core/shared/not-found-page/not-found-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     UserCountryComponent,
-    LoginPageComponent
+    LoginPageComponent,
+    NavbarComponent,
+    NotFoundPageComponent
   ],
   imports: [
     BrowserModule,
