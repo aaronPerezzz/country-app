@@ -8,11 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { Constants } from './utils/constants';
+import { CountriesComponent } from './pages/countries/countries.component';
+import { CountryInfoComponent } from './pages/country-info/country-info.component';
+import { NavMenuComponent } from './pages/nav-menu/nav-menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserCountryComponent
+    UserCountryComponent,
+    CountriesComponent,
+    CountryInfoComponent,
+    NavMenuComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,19 @@
+<app-nav-menu></app-nav-menu>
+
+@if(listaPaises$ | async; as resultObject) {
+    <div class="row ms-">
+        @for(pais of resultObject; track pais.name) {
+            <div class="col-6 col-md-2 mb-4 ms-4">
+                <a [routerLink]="['/pais', pais.name?.common]" style="text-decoration: none;">
+                    <div class="d-flex flex-column gap-3 rounded justify-content-end p-4 aspect-ratio-16x9"
+                        style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url({{pais.flags?.png}}); 
+                        background-repeat: no-repeat; background-position: center; background-size: cover;">
+                        <p class="text-white fw-bold fs-5 w-80 text-truncate" style="margin-top: 20px;">{{ pais.translations?.['spa']?.common }}</p>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+}
+
+<router-outlet></router-outlet>
