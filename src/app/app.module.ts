@@ -8,16 +8,23 @@ import { HttpClientModule } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { Constants } from './utils/constants';
+import { LoginPageComponent } from './auth/pages/login-page/login-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserCountryComponent
+    UserCountryComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     provideAnimations(),
@@ -25,7 +32,8 @@ import { Constants } from './utils/constants';
     preventDuplicates: true,
     closeButton: true,
     positionClass: Constants.POSITION_TOAST
-  }),
+    }),
+    CookieService
 ],
   bootstrap: [AppComponent]
 })

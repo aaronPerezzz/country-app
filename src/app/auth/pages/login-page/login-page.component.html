@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-8" style="margin-top: 20%;">
+      <div class="container-fluid d-flex flex-column justify-content-center">
+        <div class="d-flex justify-content-center mb-3">
+          <img src="./assets/images/countries.png" alt="countries"  style="width: 150px; height: 150px;">
+        </div>
+          <h3 class="d-flex justify-content-center">Inicia sesión</h3>
+          <form [formGroup]="formLogin" (ngSubmit)="loginSubmit($event)">
+            <div class="form-group d-flex flex-column justify-content-center align-items-center">
+              <div class="mb-3" style="width: 50%;">
+                <label for="inputLogin" class="forma-label">Correo:</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="usuario@correo.com"
+                  formControlName="inputEmail"
+                  [(ngModel)]="email"
+                  required
+                />
+                <div *ngIf="formLogin.get('inputEmail')?.errors && formLogin.get('inputEmail')?.dirty">
+                  <small *ngIf="formLogin.get('inputEmail')?.hasError('required') || formLogin.get('inputEmail')?.hasError('email')" class="erroField">
+                    Correo invalido
+                  </small>
+                </div >
+              </div>
+              <div class="mb-3" style="width: 50%;">
+                <label for="inputLogin" class="forma-label"
+                  >Contraseña:</label
+                >
+                <div class="input-group">
+                  <input
+                  [type]="showPassword ? 'text' : 'password'"
+                  class="form-control"
+                  required
+                  formControlName="inputPassword"
+                  [(ngModel)]="password" />
+                  <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" value="" (change)="visiblePassword($event)">
+                  </div>
+                </div>
+
+                  <div *ngIf="formLogin.get('inputPassword')?.errors && formLogin.get('inputPassword')?.dirty">
+                    <small *ngIf="formLogin.get('inputPassword')?.hasError('required')" class="erroField">
+                      Contraseña requerida
+                    </small>
+                  </div >
+              </div>
+              <div class="d-flex flex-row justify-content-center mt-2 mb-5">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  style="width: 300px;border-radius: 20px;"
+                  [disabled]="!formLogin.valid"
+                >
+                  Iniciar sesión
+                </button>
+              </div>
+            </div>
+          </form>
+      </div>
+    </div>
+  </div>
+</div>
