@@ -1,8 +1,16 @@
+<div class="row my-3 d-flex justify-content-center">
+    <div class="col-12 col-md-6">
+        <div class="search-container">
+            <input type="text" class="form-control" placeholder="Buscar..." [(ngModel)]="searchTerm">
+            <i class="fas fa-search icon" style="font-size: 20px;"></i>
+        </div>
+    </div>
+</div>
 
-@if(listaPaises$ | async; as resultObject) {
-    <div class="row mt-5 ms-5">
-        @for(pais of resultObject; track pais.name) {
-            <div class="col-4 col-md-2 mb-4 ms-4">
+@if(countriesList$ | async; as resultObject) {
+    <div class="row ms-4">
+        @for(pais of inputSearch(resultObject); track pais.name) {
+            <div class="col-6 col-md-4 col-lg-3 mb-4">
                 <a [routerLink]="['/country', pais.name?.common]" style="text-decoration: none;">
                     <div class="d-flex flex-column rounded justify-content-end p-4 aspect-ratio-16x9"
                         style="background-image: linear-gradient(0deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%, rgba(0, 0, 0, 0.1) 100%, rgba(0, 0, 0, 0) 100%), url({{pais.flags?.png}}); 
