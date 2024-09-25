@@ -30,7 +30,6 @@ export class CountryService {
   public getAllContries() {
     return this.httpClient.get<Country[]>(Constants.URL_CONTRIES+"/all")
     .pipe(
-      tap(_ => console.info()),
       catchError(this.handleError<any>("getAll", null))
     )
   }

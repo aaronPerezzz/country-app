@@ -8,10 +8,14 @@
             <app-country-filter (filtersApplied)="countriesComponent.applyFilters($event)"></app-country-filter>
         </div>
         <div class="col-12 col-sm-8 col-md-9">
-            <app-countries #countriesComponent regionName="{{region}}"></app-countries>
+          @if (isAdmin) {
+            <app-admin-country/>
+          }
+          @if(!isAdmin){
+            <app-countries #countriesComponent regionName={{region}}></app-countries>
+          }
         </div>
     </div>
-
 </div>
     
 

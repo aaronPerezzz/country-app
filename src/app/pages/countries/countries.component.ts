@@ -2,6 +2,8 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { CountryService } from '../../core/services/country.service';
 import { map, Observable } from 'rxjs';
 import { Country } from '../../core/interfaces/country';
+import { ActivatedRoute } from '@angular/router';
+import { Constants } from '../../utils/constants';
 
 @Component({
   selector: 'app-countries',
@@ -24,6 +26,7 @@ export class CountriesComponent implements OnInit {
   ngOnInit(): void {
     this.getCountries(this.regionName);
   }
+
 
   /**
    * Regresa una lista de países por region

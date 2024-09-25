@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserCountryComponent } from './pages/user-country/user-country.component';
@@ -15,7 +15,7 @@ import { CountriesComponent } from './pages/countries/countries.component';
 import { NavbarComponent } from './core/shared/navbar/navbar.component';
 import { NotFoundPageComponent } from './core/shared/not-found-page/not-found-page.component';
 import { CountryFilterComponent } from './pages/country-filter/country-filter.component';
-import { NavMenuComponent } from './pages/nav-menu/nav-menu.component';
+import { AdminCountryComponent } from './pages/admin-country/admin-country.component';
 
 
 @NgModule({
@@ -27,14 +27,15 @@ import { NavMenuComponent } from './pages/nav-menu/nav-menu.component';
     NavbarComponent,
     NotFoundPageComponent,
     CountryFilterComponent,
-    NavMenuComponent
+    AdminCountryComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [
     provideAnimations(),

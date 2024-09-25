@@ -1,11 +1,6 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { CountryService } from '../../core/services/country.service';
-import { ToastService } from '../../core/services/toast.service';
-import { User } from '../../auth/interfaces/user';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AuthService } from '../../auth/services/auth.service';
-import { HttpClient } from '@angular/common/http';
-import { Constants } from '../../utils/constants';
-
+import { CountriesComponent } from '../countries/countries.component';
 
 @Component({
   selector: 'app-user-country',
@@ -15,14 +10,17 @@ import { Constants } from '../../utils/constants';
 export class UserCountryComponent implements OnInit{
   name!: string;
   region!: string;
+  isAdmin: boolean = false;
+  @ViewChild('countriesComponent') countriesComponent!: CountriesComponent;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     const user = this.authService.getToken();
 
-    this.name = user.user.firstName; 
+    this.name = user.user.firstName;
     this.region = user.user.region;
+    this.isAdmin = user.user.admin;
   }
 
 
