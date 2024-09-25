@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit, OnDestroy{
       country:  Constants.EMPTY_STRING,
       region:  Constants.EMPTY_STRING,
       admin:  false,
-      avatar:  Constants.EMPTY_STRING};
+      avatar: Constants.AVATAR_DEFAULT};
     this.subscription = this.authService.showNavbar.subscribe((val) => {
       this.showNavbar = val;
     });
@@ -34,16 +34,19 @@ export class NavbarComponent implements OnInit, OnDestroy{
   }
   ngOnInit(): void {
     if(this.authService.existToken()){
-      this.user = this.authService.getToken().user;
+      this.user = <User>this.authService.getToken().user;
     }
   }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
+    this.user = <User>this.authService.getToken().user;
   }
 
   public logoutUser() {
-    this.authService.logout();
-    this.router.navigateByUrl('/login')
+    if(this.authService.existToken()){
+      this.authService.logout();
+      this.router.navigateByUrl('login')
+    }
   }
 
 

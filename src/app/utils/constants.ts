@@ -19,6 +19,7 @@ export class Constants {
   public static ERROR_CURRENCIES = 'Error monedas';
   public static ERROR_LANGUAGUES = 'Error idiomas';
   public static ERROR_SUBREGION = 'Error subregiones';
+  public static AVATAR_DEFAULT = '../../../../assets/images/avatarDefault.png';
 
 
   public static NUM0 = 0;

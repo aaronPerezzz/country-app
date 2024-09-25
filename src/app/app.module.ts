@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserCountryComponent } from './pages/user-country/user-country.component';
@@ -31,13 +31,15 @@ import { NavMenuComponent } from './pages/nav-menu/nav-menu.component';
     AdminCountryComponent,
     CountryFilterComponent,
     NavMenuComponent
+
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   providers: [
     provideAnimations(),

@@ -25,20 +25,38 @@ export class CountriesComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private countryName: string = Constants.EMPTY_STRING;
   public searchTerm: string = '';
+  public user:User;
+
+  /**
+   *
+   */
+  constructor() {
+    this.user = {
+      id: 0,
+      email: Constants.EMPTY_STRING,
+      password: Constants.EMPTY_STRING,
+      firstName: Constants.EMPTY_STRING,
+      lastName:  Constants.EMPTY_STRING,
+      country:  Constants.EMPTY_STRING,
+      region:  Constants.EMPTY_STRING,
+      admin:  false,
+      avatar: Constants.AVATAR_DEFAULT};
+  }
+
   @Input() regionName!: string;
 
   ngOnInit(): void {
-    const user:User = this.authService.getToken().user;
+    this.user = <User>this.authService.getToken().user;
 
-    if(user.admin){
+    if(this.user.admin){
       this.countryName = this.route.snapshot.paramMap.get('region')!;
       this.getCountries(this.countryName);
     } else {
       this.getCountries(this.regionName);
     }
-
-
   }
+
+
 
 
   /**
