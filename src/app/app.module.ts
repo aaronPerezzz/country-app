@@ -15,6 +15,9 @@ import { CountriesComponent } from './pages/countries/countries.component';
 import { NavbarComponent } from './core/shared/navbar/navbar.component';
 import { NotFoundPageComponent } from './core/shared/not-found-page/not-found-page.component';
 import { AdminCountryComponent } from './pages/admin-country/admin-country.component';
+import { CountryFilterComponent } from './pages/country-filter/country-filter.component';
+import { NavMenuComponent } from './pages/nav-menu/nav-menu.component';
+
 
 
 @NgModule({
@@ -25,7 +28,9 @@ import { AdminCountryComponent } from './pages/admin-country/admin-country.compo
     CountriesComponent,
     NavbarComponent,
     NotFoundPageComponent,
-    AdminCountryComponent
+    AdminCountryComponent,
+    CountryFilterComponent,
+    NavMenuComponent
   ],
   imports: [
     BrowserModule,

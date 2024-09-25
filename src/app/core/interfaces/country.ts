@@ -20,7 +20,7 @@ export interface Country {
   demonyms?:     Demonyms;
   flag?:         string;
   maps?:         Maps;
-  population?:   number;
+  population:   number;
   car?:          Car;
   timezones?:    string[];
   continents?:   string[];
@@ -31,6 +31,8 @@ export interface Country {
   cioc?:        string;
   subregion?:   string;
   fifa?:        string;
+  numCountries: number;
+  numPolutation: number;
 
 }
 

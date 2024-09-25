@@ -16,6 +16,9 @@ export class Constants {
   public static ERROR_USERS = 'Error usuarios';
   public static ERROR_LOGIN = 'Error al iniciar sesión';
   public static MESSA_ERROR_LOGIN = 'usuario o contraseña invalidos"';
+  public static ERROR_CURRENCIES = 'Error monedas';
+  public static ERROR_LANGUAGUES = 'Error idiomas';
+  public static ERROR_SUBREGION = 'Error subregiones';
 
 
   public static NUM0 = 0;
