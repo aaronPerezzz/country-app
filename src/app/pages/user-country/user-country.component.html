@@ -11,7 +11,12 @@
                 </div>
             </div>
     </div>
+    @if (isAdmin) {
+      <app-admin-country/>
+    }
+    @if(!isAdmin){
+      <app-countries regionName={{region}}></app-countries>
+    }
 
-    <app-countries regionName={{region}}></app-countries>
 </div>
 

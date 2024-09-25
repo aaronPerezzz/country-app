@@ -11,7 +11,7 @@ export interface Country {
   idd?:          Idd;
   capital?:      string[];
   altSpellings?: string[];
-  region?:       string;
+  region:       string;
   languages?:    Languages;
   translations?: { [key: string]: Translation };
   latlng?:       number[];

@@ -15,14 +15,16 @@ import { Constants } from '../../utils/constants';
 export class UserCountryComponent implements OnInit{
   name!: string;
   region!: string;
+  isAdmin: boolean = false;
 
   constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
     const user = this.authService.getToken();
 
-    this.name = user.user.firstName; 
+    this.name = user.user.firstName;
     this.region = user.user.region;
+    this.isAdmin = user.user.admin;
   }
 
 

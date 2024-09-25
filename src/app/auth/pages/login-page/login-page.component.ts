@@ -45,8 +45,11 @@ export class LoginPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getAllUser();
     this.authService.hideNavbar();
+    this.getAllUser();
+    if(this.authService.existToken()){
+      this.router.navigateByUrl('userCountry');
+    }
   }
 
   ngOnDestroy(): void {

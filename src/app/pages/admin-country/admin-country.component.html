@@ -1,0 +1,30 @@
+<div class="card pt-5">
+  <div class="card-body">
+    <div class="row mt-5 ms-5 justify-content-center">
+      <div class="col-6">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (region of regions; track region.region; let idx = $index) {
+              <tr>
+                <th scope="row">{{idx +1 }}</th>
+                <td>
+                  <label style="font-size: 12; font-weight: bold;">{{region.region}}</label>
+                </td>
+                <td>
+                  <a [routerLink]="['/region', region.region]">ver paises...</a>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,12 +1,32 @@
-<nav *ngIf="showNavbar" class="navbar navbar-expand-lg bg-body-tertiary">
+<nav *ngIf="showNavbar" class="navbar"  style="background-color:#08851b;">
   <div class="container-fluid">
     <a class="navbar-brand">
       <div class="d-flex flex-row justify-content-center">
-        <div class="d-flex justify-content-center" style="margin-right: 10%; margin-left: 10%;">
-          <img src="./assets/images/countries.png" alt="countries"  style="width: 30px; height: 30px;">
+        <div
+          class="d-flex justify-content-center"
+          style="margin-right: 10%; margin-left: 10%"
+        >
+          <img
+            src="./assets/images/countries.png"
+            alt="countries"
+            style="width: 30px; height: 30px"
+          />
         </div>
-        <h5>Paises</h5>
+        <h5 style="color: white;">Paises</h5>
       </div>
     </a>
+    <div
+      class="d-flex flex-row justify-content-end"
+      style="padding-right: 10px"
+    >
+      <img [src]="user.avatar" [alt]="user.firstName" style="border-radius: 50px; width: 50px; height: 50px;"/>
+      <button
+        type="button"
+        class="btn"
+        data-bs-toggle="tooltip"
+        data-bs-placement="left"
+        (click)="logoutUser()"
+        data-bs-title="Cerrar sesión"><i class="fa fa-sign-out" style="color: white;"></i></button>
+    </div>
   </div>
 </nav>

@@ -14,6 +14,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { CountriesComponent } from './pages/countries/countries.component';
 import { NavbarComponent } from './core/shared/navbar/navbar.component';
 import { NotFoundPageComponent } from './core/shared/not-found-page/not-found-page.component';
+import { AdminCountryComponent } from './pages/admin-country/admin-country.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { NotFoundPageComponent } from './core/shared/not-found-page/not-found-pa
     LoginPageComponent,
     CountriesComponent,
     NavbarComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    AdminCountryComponent
   ],
   imports: [
     BrowserModule,
