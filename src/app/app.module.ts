@@ -16,6 +16,8 @@ import { NavbarComponent } from './core/shared/navbar/navbar.component';
 import { NotFoundPageComponent } from './core/shared/not-found-page/not-found-page.component';
 import { CountryFilterComponent } from './pages/country-filter/country-filter.component';
 import { AdminCountryComponent } from './pages/admin-country/admin-country.component';
+import { CountryInfoComponent } from './pages/country-info/country-info.component';
+import { GoogleMapsModule } from "@angular/google-maps";
 
 
 @NgModule({
@@ -24,6 +26,7 @@ import { AdminCountryComponent } from './pages/admin-country/admin-country.compo
     UserCountryComponent,
     LoginPageComponent,
     CountriesComponent,
+    CountryInfoComponent,
     NavbarComponent,
     NotFoundPageComponent,
     CountryFilterComponent,
@@ -35,7 +38,8 @@ import { AdminCountryComponent } from './pages/admin-country/admin-country.compo
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    GoogleMapsModule
   ],
   providers: [
     provideAnimations(),
