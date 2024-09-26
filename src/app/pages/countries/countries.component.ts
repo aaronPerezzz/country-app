@@ -4,6 +4,8 @@ import { map, Observable } from 'rxjs';
 import { Country } from '../../core/interfaces/country';
 import { ActivatedRoute } from '@angular/router';
 import { Constants } from '../../utils/constants';
+import { User } from '../../auth/interfaces/user';
+import { AuthService } from '../../auth/services/auth.service';
 
 @Component({
   selector: 'app-countries',
@@ -18,14 +20,43 @@ import { Constants } from '../../utils/constants';
 export class CountriesComponent implements OnInit {
   public countriesList$!: Observable<Country[]>;
   private countryService = inject(CountryService);
+  private authService = inject(AuthService);
 
-  public searchTerm: string = ''; 
+  private route = inject(ActivatedRoute);
+  private countryName: string = Constants.EMPTY_STRING;
+  public searchTerm: string = '';
+  public user:User;
+
+  /**
+   *
+   */
+  constructor() {
+    this.user = {
+      id: 0,
+      email: Constants.EMPTY_STRING,
+      password: Constants.EMPTY_STRING,
+      firstName: Constants.EMPTY_STRING,
+      lastName:  Constants.EMPTY_STRING,
+      country:  Constants.EMPTY_STRING,
+      region:  Constants.EMPTY_STRING,
+      admin:  false,
+      avatar: Constants.AVATAR_DEFAULT};
+  }
 
   @Input() regionName!: string;
 
   ngOnInit(): void {
-    this.getCountries(this.regionName);
+    this.user = <User>this.authService.getToken().user;
+
+    if(this.user.admin){
+      this.countryName = this.route.snapshot.paramMap.get('region')!;
+      this.getCountries(this.countryName);
+    } else {
+      this.getCountries(this.regionName);
+    }
   }
+
+
 
 
   /**
@@ -35,7 +66,7 @@ export class CountriesComponent implements OnInit {
   private getCountries(regionName: string) {
     this.countriesList$ = this.countryService.getRegionsByName(regionName).pipe(
         map(countries => {
-            return countries.sort((a: Country, b: Country) => 
+            return countries.sort((a: Country, b: Country) =>
                 a.name!.common!.localeCompare(b.name!.common!)
             );
         })
@@ -52,7 +83,7 @@ export class CountriesComponent implements OnInit {
           .includes(this.removeAccents(this.searchTerm.toLowerCase()))
       );
   }
-  
+
   /**
    * Elimina los acentos
    */
@@ -70,16 +101,16 @@ export class CountriesComponent implements OnInit {
             const filteredCountries = countries.filter((country: Country) => {
                 // Filtrar por idiomas
                 const languages = country.languages ? Object.values(country.languages) : [];
-                const languageMatch = !filters.languages.length || 
+                const languageMatch = !filters.languages.length ||
                 languages.some(language => filters.languages.includes(language));
 
                 // Filtrar por monedas
                 const currencies = country.currencies ? Object.values(country.currencies) : [];
-                const currencyMatch = !filters.currencies.length || 
+                const currencyMatch = !filters.currencies.length ||
                 currencies.some(c => filters.currencies.includes(c.name));
 
                 // Filtrar por subregiones
-                const subregionMatch = !filters.subregions.length || 
+                const subregionMatch = !filters.subregions.length ||
                 filters.subregions.includes(country.subregion);
 
                 // Filtrar por independencia
@@ -89,7 +120,7 @@ export class CountriesComponent implements OnInit {
             });
 
             // Ordena alfabéticamente por el nombre después de filtrar
-            return filteredCountries.sort((a: Country, b: Country) => 
+            return filteredCountries.sort((a: Country, b: Country) =>
                 a.name!.common!.localeCompare(b.name!.common!)
             );
         })

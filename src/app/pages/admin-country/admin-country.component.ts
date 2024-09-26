@@ -21,6 +21,7 @@ export class AdminCountryComponent implements OnInit{
   user:User;
   regions:Country[] = [];
 
+
     /**
      *
      */
@@ -40,12 +41,42 @@ export class AdminCountryComponent implements OnInit{
 
   ngOnInit(): void {
     this.user = this.authService.getToken().user;
+    this.getRegions();
+  }
+
+  /**
+   * Obtiene todas los paises
+   */
+  private getRegions(){
     this.countryService.getAllContries().subscribe((data:Country[]) => {
-      this.regions = <Country[]>data.filter((obj, index) => data.findIndex((item) => item.region === obj.region) === index).sort((a, b) => ((a.region < b.region) ? -1 : 1));
-      console.log(this.regions)
+      this.regions = this.orderByRegions(data);
+      this.countCountriesByRegion(this.regions);
     }, (error) => {
       this.toastService.message("Error", error.message, ToastType.ERROR);
     })
+  }
+
+  /**
+   * Filtra las regiones sin que se repitan, y ordena el arreglo de forma ascendente
+   * @param items
+   * @returns Country[]
+   */
+  private orderByRegions(items: Country[]):Country[]{
+    return items.filter((obj, index) => items.findIndex((item) => item.region === obj.region) === index).sort((a, b) => ((a.region < b.region) ? -1 : 1));
+  }
+
+  /**
+   * Por cada region, enumera los paises y numero de habitantes de cada región
+   * @param regions
+   */
+  private countCountriesByRegion(regions: Country[]){
+    for(let i = 0; i < regions.length; i++){
+      let regionName = regions[i].region;
+      this.countryService.getRegionsByName(regionName).subscribe((data:Country[]) =>{
+        regions[i].numCountries = data.length;
+        regions[i].numPolutation = data.reduce((accumulator, currentValue) => accumulator + currentValue.population, Constants.NUM0);
+      })
+    }
   }
 
 

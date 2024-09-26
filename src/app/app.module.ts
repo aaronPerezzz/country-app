@@ -14,8 +14,8 @@ import { CookieService } from 'ngx-cookie-service';
 import { CountriesComponent } from './pages/countries/countries.component';
 import { NavbarComponent } from './core/shared/navbar/navbar.component';
 import { NotFoundPageComponent } from './core/shared/not-found-page/not-found-page.component';
-import { CountryFilterComponent } from './pages/country-filter/country-filter.component';
 import { AdminCountryComponent } from './pages/admin-country/admin-country.component';
+import { CountryFilterComponent } from './pages/country-filter/country-filter.component';
 import { CountryInfoComponent } from './pages/country-info/country-info.component';
 import { GoogleMapsModule } from "@angular/google-maps";
 
@@ -29,8 +29,8 @@ import { GoogleMapsModule } from "@angular/google-maps";
     CountryInfoComponent,
     NavbarComponent,
     NotFoundPageComponent,
-    CountryFilterComponent,
-    AdminCountryComponent
+    AdminCountryComponent,
+    CountryFilterComponent
   ],
   imports: [
     BrowserModule,
