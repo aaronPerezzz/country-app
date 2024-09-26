@@ -44,6 +44,9 @@ export class AdminCountryComponent implements OnInit{
     this.getRegions();
   }
 
+  /**
+   * Obtiene todas los paises
+   */
   private getRegions(){
     this.countryService.getAllContries().subscribe((data:Country[]) => {
       this.regions = this.orderByRegions(data);
@@ -53,10 +56,19 @@ export class AdminCountryComponent implements OnInit{
     })
   }
 
+  /**
+   * Filtra las regiones sin que se repitan, y ordena el arreglo de forma ascendente
+   * @param items
+   * @returns Country[]
+   */
   private orderByRegions(items: Country[]):Country[]{
     return items.filter((obj, index) => items.findIndex((item) => item.region === obj.region) === index).sort((a, b) => ((a.region < b.region) ? -1 : 1));
   }
 
+  /**
+   * Por cada region, enumera los paises y numero de habitantes de cada región
+   * @param regions
+   */
   private countCountriesByRegion(regions: Country[]){
     for(let i = 0; i < regions.length; i++){
       let regionName = regions[i].region;
