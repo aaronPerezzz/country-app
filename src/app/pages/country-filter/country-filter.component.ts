@@ -39,10 +39,11 @@ export class CountryFilterComponent implements OnInit {
 
   isFiltersApplied: boolean = false;
 
-  isSectionOpen: { [key in 'language' | 'currency' | 'subregion']: boolean } = {
+  isSectionOpen: { [key in 'language' | 'currency' | 'subregion' | 'independent']: boolean } = {
     language: false,
     currency: false,
-    subregion: false
+    subregion: false,
+    independent: false
   };
 
   ngOnInit(): void {
@@ -159,7 +160,7 @@ export class CountryFilterComponent implements OnInit {
   /**
    * Muestra u oculta algún filtro en específico
    */
-  toggleSection(section: 'language' | 'currency' | 'subregion') {
+  toggleSection(section: 'language' | 'currency' | 'subregion' | 'independent') {
     this.isSectionOpen[section] = !this.isSectionOpen[section];
   }
 

@@ -7,7 +7,7 @@
 <div class="filtro mt-5" [ngClass]="{'show': isFiltersVisible}">
     <div class="filter-section">
         <hr>
-        <h3 (click)="toggleSection('language')">Idioma <span>{{ isSectionOpen.language ? '-' : '+' }}</span></h3>
+        <h5 (click)="toggleSection('language')">Idioma <span>{{ isSectionOpen.language ? '-' : '+' }}</span></h5>
         @if(isSectionOpen.language) {
             <div>
                 @for(language of languagesList; track $index) {
@@ -21,7 +21,7 @@
     </div>
     <hr>
     <div class="filter-section">
-        <h3 (click)="toggleSection('currency')">Moneda <span>{{ isSectionOpen.currency ? '-' : '+' }}</span></h3>
+        <h5 (click)="toggleSection('currency')">Moneda <span>{{ isSectionOpen.currency ? '-' : '+' }}</span></h5>
         @if(isSectionOpen.currency) {
             <div>
                 @for(currencie of currenciesList; track $index) {
@@ -35,7 +35,7 @@
     </div>
     <hr>
     <div class="filter-section">
-        <h3 (click)="toggleSection('subregion')">Subregión <span>{{ isSectionOpen.subregion ? '-' : '+' }}</span></h3>
+        <h5 (click)="toggleSection('subregion')">Subregión <span>{{ isSectionOpen.subregion ? '-' : '+' }}</span></h5>
         @if(isSectionOpen.subregion) {
             <div>
                 @for(subregion of subregionsList; track $index) {
@@ -49,13 +49,15 @@
     </div>
     <hr>
     <div class="filter-section">
-        <h3>Independiente</h3>
-        <label>
-            <input type="checkbox" [(ngModel)]="isIndependent"> Mostrar solo países independientes
-        </label>
+        <h5 (click)="toggleSection('independent')">Independiente <span>{{ isSectionOpen.independent ? '-' : '+' }}</span></h5>
+        @if(isSectionOpen.independent) {
+            <label>
+                <input type="checkbox" [(ngModel)]="isIndependent"> Mostrar solo países independientes
+            </label>
+        }
     </div>
-    <div class="d-flex flex-column p-3">
-        <button class="btn btn-primary" (click)="applyFilters()">Aplicar Filtros</button>
-        <button *ngIf="isFiltersApplied" class="btn btn-secondary mt-2" (click)="clearFilters()">Limpiar Filtros</button>
+    <div class="d-flex flex-row p-3">
+        <button class="btn btn-sm btn-primary me-1" (click)="applyFilters()">Aplicar Filtros</button>
+        <button *ngIf="isFiltersApplied" class="btn btn-sm btn-secondary" (click)="clearFilters()">Limpiar Filtros</button>
     </div>
 </div>

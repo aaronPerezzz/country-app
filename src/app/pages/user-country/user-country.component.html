@@ -1,7 +1,7 @@
 <div class="container-fluid mt-3">
-  <h5 class="fw-light">Bienvendio(a) a {{region}}, {{name}}</h5>
+  <h5 class="fw-light">Bienvenido(a) a {{region}}, {{name}}</h5>
   <h2>Explora el mundo</h2>
-  <h5 class="fw-light text-secondary pb-5">Descubre detalles sobre países y regiones</h5>
+  <h5 class="fw-light text-secondary">Descubre detalles sobre países y regiones</h5>
   @if (isAdmin) {
     <app-admin-country/>
   }
@@ -10,7 +10,7 @@
       <div class="col-12 col-md-3">
           <app-country-filter (filtersApplied)="countriesComponent.applyFilters($event)"></app-country-filter>
       </div>
-      <div class="col-12 col-sm-8 col-md-9">
+      <div class="col-12 col-md-9">
           <app-countries #countriesComponent regionName={{region}}></app-countries>
       </div>
   </div>

@@ -40,7 +40,7 @@ export class CountryService {
    * @returns Country
    */
   public getCountryByName(countryName: string){
-    return this.httpClient.get<Country[]>(Constants.URL_CONTRIES+`/name/${countryName}`)
+    return this.httpClient.get<Country[]>(Constants.URL_CONTRIES+`/name/${countryName}?fullText=true`)
     .pipe(
       map((country: Country[]) => country[Constants.NUM0]),
       catchError(this.handleError<any>("getCountryByName", null))
