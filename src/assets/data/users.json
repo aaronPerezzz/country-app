@@ -1,0 +1,68 @@
+[
+  {
+      "id": 1,
+      "email": "michael.lawson@reqres.in",
+      "password": "12345",
+      "firstName": "Michael",
+      "lastName": "Lawson",
+      "country": "Bouvet Island",
+      "region": "Antarctic",
+      "admin": true,
+      "avatar": "https://reqres.in/img/faces/7-image.jpg"
+  },
+  {
+      "id": 2,
+      "email": "lindsay.ferguson@reqres.in",
+      "password": "12345",
+      "firstName": "Lindsay",
+      "lastName": "Ferguson",
+      "country": "Croatia",
+      "region": "Europe",
+      "admin": false,
+      "avatar": "https://reqres.in/img/faces/8-image.jpg"
+  },
+  {
+      "id": 3,
+      "email": "tobias.funke@reqres.in",
+      "password": "12345",
+      "firstName": "Tobias",
+      "lastName": "Funke",
+      "country": "Switzerland",
+      "region": "Europe",
+      "admin": false,
+      "avatar": "https://reqres.in/img/faces/9-image.jpg"
+  },
+  {
+      "id": 4,
+      "email": "byron.fields@reqres.in",
+      "password": "12345",
+      "firstName": "Byron",
+      "lastName": "Fields",
+      "country": "Taiwan",
+      "region": "Asia",
+      "admin": false,
+      "avatar": "https://reqres.in/img/faces/10-image.jpg"
+  },
+  {
+      "id": 5,
+      "email": "george.edwards@reqres.in",
+      "password": "12345",
+      "firstName": "George",
+      "lastName": "Edwards",
+      "country": "Wallis and Futuna",
+      "region": "Oceania",
+      "admin": false,
+      "avatar": "https://reqres.in/img/faces/11-image.jpg"
+  },
+  {
+      "id": 6,
+      "email": "rachel.howell@reqres.in",
+      "password": "12345",
+      "firstName": "Rachel",
+      "lastName": "Howell",
+      "country": "Barbados",
+      "region": "Americas",
+      "admin": false,
+      "avatar": "https://reqres.in/img/faces/12-image.jpg"
+  }
+]
