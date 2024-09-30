@@ -1,0 +1,63 @@
+<div class="d-md-none mb-3">
+    <button class="btn btn-secondary" (click)="toggleFilters()">
+        {{ isFiltersVisible ? 'Ocultar Filtros' : 'Mostrar Filtros' }}
+    </button>
+</div>
+
+<div class="filtro mt-5" [ngClass]="{'show': isFiltersVisible}">
+    <div class="filter-section">
+        <hr>
+        <h5 (click)="toggleSection('language')">Idioma <span>{{ isSectionOpen.language ? '-' : '+' }}</span></h5>
+        @if(isSectionOpen.language) {
+            <div>
+                @for(language of languagesList; track $index) {
+                    <label>
+                        <input type="checkbox" [checked]="selectedIdiomas.includes(language)" 
+                        (change)="toggleSelection(selectedIdiomas, language)"> {{language}}
+                    </label>
+                }
+            </div>
+        }
+    </div>
+    <hr>
+    <div class="filter-section">
+        <h5 (click)="toggleSection('currency')">Moneda <span>{{ isSectionOpen.currency ? '-' : '+' }}</span></h5>
+        @if(isSectionOpen.currency) {
+            <div>
+                @for(currencie of currenciesList; track $index) {
+                    <label>
+                        <input type="checkbox" [checked]="selectedMonedas.includes(currencie.name)" 
+                        (change)="toggleSelection(selectedMonedas, currencie.name)"> {{ currencie.name }} - {{ currencie.symbol }}
+                    </label>
+                }
+            </div>
+        }
+    </div>
+    <hr>
+    <div class="filter-section">
+        <h5 (click)="toggleSection('subregion')">Subregión <span>{{ isSectionOpen.subregion ? '-' : '+' }}</span></h5>
+        @if(isSectionOpen.subregion) {
+            <div>
+                @for(subregion of subregionsList; track $index) {
+                    <label>
+                        <input type="checkbox" [checked]="selectedSubregiones.includes(subregion)" 
+                        (change)="toggleSelection(selectedSubregiones, subregion)"> {{ subregion }}
+                    </label>
+                }
+            </div>
+        }
+    </div>
+    <hr>
+    <div class="filter-section">
+        <h5 (click)="toggleSection('independent')">Independiente <span>{{ isSectionOpen.independent ? '-' : '+' }}</span></h5>
+        @if(isSectionOpen.independent) {
+            <label>
+                <input type="checkbox" [(ngModel)]="isIndependent"> Mostrar solo países independientes
+            </label>
+        }
+    </div>
+    <div class="d-flex flex-row p-3">
+        <button class="btn btn-sm btn-primary me-1" (click)="applyFilters()">Aplicar Filtros</button>
+        <button *ngIf="isFiltersApplied" class="btn btn-sm btn-secondary" (click)="clearFilters()">Limpiar Filtros</button>
+    </div>
+</div>

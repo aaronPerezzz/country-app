@@ -1,0 +1,20 @@
+{
+  "/country/": {
+    "target": "https://restcountries.com/v3.1",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/country/": ""
+    },
+    "changeOrigin": true
+  },
+  "/userLogin/": {
+    "target": "https://reqres.in",
+    "secure": false,
+    "logLevel": "debug",
+    "pathRewrite": {
+      "^/userLogin/": ""
+    },
+    "changeOrigin": true
+  }
+}
